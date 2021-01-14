@@ -10,7 +10,7 @@ class Ingredient:
             self.tags[cat] = tag
     
     def gen_quantity(self):
-        ingr_range = {'Oil':(4,8,1),'Flour':(1,3,2),'Sugar':(1,3,2),'Spices':(1,3,1),'Vegetable':(1,2,2),'Condiments':(1,4,1),'Eggs':(1,3,1),'Base':(1,1,1)}
+        ingr_range = {'Oil':(4,8,1),'Flour':(1,3,2),'Sugar':(1,3,2),'Spices':(1,3,1),'Vegetable':(1,2,2),'Condiments':(1,4,1),'Eggs':(1,3,1),'Base':(1,1,1),'Leavening':(1,3,2)}
         kind = Ingredient.return_type(self)
         range = ingr_range.get(kind)
         min = range[0]

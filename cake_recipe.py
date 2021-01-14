@@ -1,5 +1,4 @@
 from ingredient import Ingredient
-import units
 from collections import defaultdict
 from random import randint
 
@@ -20,10 +19,8 @@ class Cake_Recipe:
             ingredient_string = ingredient_string + '\n'
         return(ingredient_string)
 
-
-unit_dict = {'tablespoon':15,'teaspoon':5,'cup':250,'egg':50}
-
 def unit_ml(unit,quantity):
+    unit_dict = {'tablespoon':15,'teaspoon':5,'cup':250,'egg':50}
     ml = unit_dict.get(unit)
     vol = ml*quantity
     return vol
@@ -62,7 +59,7 @@ def water_ratio(cake_ingredients):
         water = Ingredient.return_water(ingr)
         unit = Ingredient.return_unit(ingr)
         quant = Ingredient.return_quantity(ingr)
-        ml = units.unit_ml(unit,quant)
+        ml = unit_ml(unit,quant)
         if water=='wet':
             wet = wet + ml
         if water=='dry':
@@ -104,6 +101,8 @@ def cake_generator(ingredient_list):
         cake_ingr.append(spice)
         if spec_cake==0:
             name = name + Ingredient.return_name(spice) + ' '
+    
+    cake_ingr.append(sublists['Leavening'].pop())
     
     for ingr in cake_ingr:
         Ingredient.gen_quantity(ingr)
