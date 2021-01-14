@@ -21,14 +21,12 @@ class Cake_Recipe:
         return(ingredient_string)
 
 
+unit_dict = {'tablespoon':15,'teaspoon':5,'cup':250,'egg':50}
 
-#print(Ingredient.return_name(pantry_list[2]))
-#print(Ingredient.return_tags(pantry_list[2]))
-#print(Ingredient.return_type(pantry_list[2]))
-#print(Ingredient.is_cake(pantry_list[2]))
-#print(Ingredient.is_stew(pantry_list[5]))
-
-
+def unit_ml(unit,quantity):
+    ml = unit_dict.get(unit)
+    vol = ml*quantity
+    return vol
 
 def cake_sublists(ingredient_list):
     ingredient_sublists = defaultdict(list)
