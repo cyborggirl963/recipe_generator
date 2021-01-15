@@ -56,4 +56,11 @@ class Ingredient:
     
     def return_tags(self):
         return self.tags
+    
+    def to_instructions(self):
+        unit = self.tags['Unit']
+        name = self.name
+        quantity = self.quantity
+        instructions = ' '.join([str(quantity),unit,name])
+        return instructions
 

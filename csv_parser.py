@@ -1,17 +1,13 @@
 import csv
 from ingredient import Ingredient
 
-def parse(file_path):
+def parse(text_file):
     file_list = []
-
-    with open(file_path, newline='') as csvfile:
-        reader = csv.reader(csvfile,delimiter=',')
-        for row in reader:
-            file_list.append(row)
+    reader = csv.reader(text_file)
+    for row in reader:
+        file_list.append(row)
 
     cols = file_list.pop(0)
-    #print(cols)
-
     pantry_list = []
 
     for i in range(0,len(file_list)):
@@ -23,8 +19,10 @@ def parse(file_path):
                 name = row[j]
             else:
                 tags.append(str(cols[j]+':'+str(row[j])))
-        #print(name)
-        #print(tags)
         pantry_item = Ingredient(name,tags)
         pantry_list.append(pantry_item)
     return pantry_list
+
+def open_and_parse(file_path):
+    with open(file_path, newline='') as text_file:
+        return parse(text_file)
