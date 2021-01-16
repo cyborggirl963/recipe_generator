@@ -7,9 +7,16 @@ class Cake_Recipe:
         self.name = name
         self.ingredients = []
     
-    def add_ingredient(self,ingredient_instructions):
-        self.ingredients.append(ingredient_instructions)
+    def return_name(self):
+        return self.name
     
+    def add_ingredient(self,ingredient):
+        self.ingredients.append(ingredient)
+    
+    def return_ingredients(self):
+        ing_list = self.ingredients
+        return ing_list
+
     def print_ingredients(self):
         ingredient_string = ''
         for i in range(0,len(self.ingredients)):
@@ -71,12 +78,6 @@ def water_ratio(cake_ingredients):
     ratio = wet - dry
     return ratio
 
-def to_instructions(ingredient):
-    unit = Ingredient.return_unit(ingredient)
-    name = Ingredient.return_name(ingredient)
-    quantity = Ingredient.return_quantity(ingredient)
-    instructions = [str(quantity),unit,name]
-    return instructions
 
 def cake_generator(ingredient_list):
     sublists = cake_sublists(ingredient_list)
@@ -122,9 +123,7 @@ def cake_generator(ingredient_list):
     
     recipe = Cake_Recipe(name)
     for i in range(0,len(cake_ingr)):
-        ingr = to_instructions(cake_ingr[i])
-        #print(ingr)
-        Cake_Recipe.add_ingredient(recipe,ingr)
+        Cake_Recipe.add_ingredient(recipe,cake_ingr[i])
     
     return recipe
     
